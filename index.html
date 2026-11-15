@@ -227,6 +227,16 @@ src="https://www.facebook.com/tr?id=2178615639697523&ev=PageView&noscript=1"/></
     gap:14px;
     overflow:hidden;
   }
+  .topics-offer-img{ padding:10px 0 0; text-align:center; }
+  .topics-offer-img img{ width:100%; height:auto; display:block; margin:0 auto; }
+  .payment-pill{
+    display:inline-block; margin-top:-26px; position:relative; z-index:2;
+    font-size:11.5px; color:var(--gold-light); letter-spacing:.03em;
+    padding:5px 14px; border:1px solid rgba(216,178,106,.45); border-radius:999px;
+    background:rgba(23,12,32,.85);
+  }
+  @media(min-width:768px){ .payment-pill{ font-size:14px; padding:6px 18px; margin-top:-34px; } }
+  @media(min-width:1024px){ .topics-offer-img{ max-width:900px; } }
   .offer__burst{
     position:absolute; left:50%; top:50%; width:140%; aspect-ratio:1/1; transform:translate(-50%,-50%);
     background:radial-gradient(circle, rgba(216,178,106,.3) 0%, rgba(216,178,106,0) 55%);
@@ -411,180 +421,13 @@ src="https://www.facebook.com/tr?id=2178615639697523&ev=PageView&noscript=1"/></
   <p class="lead">Разберём вашу ситуацию, рассмотрим скрытые факторы и возможные пути решения.</p>
 </section>
 
-<!-- ========== БЛОК 4 — ТЕМЫ ОБРАЩЕНИЙ ========== -->
-<section class="topics container">
-  <div class="tarot-fan reveal">
-
-    <div class="tarot-card">
-      <div class="tarot-card__art">
-        <svg viewBox="0 0 200 320" preserveAspectRatio="xMidYMid slice">
-          <defs>
-            <radialGradient id="g1" cx="50%" cy="34%" r="42%">
-              <stop offset="0%" stop-color="#ff9ec4"/>
-              <stop offset="35%" stop-color="#b14f8c"/>
-              <stop offset="70%" stop-color="#3c1a40"/>
-              <stop offset="100%" stop-color="#170c20"/>
-            </radialGradient>
-          </defs>
-          <rect width="200" height="320" fill="url(#g1)"/>
-          <path d="M-10 290 L30 230 L55 260 L95 220 L120 255 L150 225 L210 280 L210 330 L-10 330 Z" fill="#140b1c"/>
-          <circle cx="72" cy="150" r="21" fill="#140b1c"/>
-          <path d="M91 150 L104 144 L104 156 Z" fill="#140b1c"/>
-          <path d="M48 230 C48 194 58 176 72 176 C86 176 96 194 96 230 Z" fill="#140b1c"/>
-          <circle cx="128" cy="150" r="21" fill="#0f0916"/>
-          <path d="M109 150 L96 144 L96 156 Z" fill="#0f0916"/>
-          <path d="M104 230 C104 194 114 176 128 176 C142 176 152 194 152 230 Z" fill="#0f0916"/>
-        </svg>
-      </div>
-      <span class="cap">Отношения и чувства</span>
-    </div>
-
-    <div class="tarot-card">
-      <div class="tarot-card__art">
-        <svg viewBox="0 0 200 320" preserveAspectRatio="xMidYMid slice">
-          <defs>
-            <radialGradient id="g2" cx="50%" cy="36%" r="46%">
-              <stop offset="0%" stop-color="#ffe9ad"/>
-              <stop offset="40%" stop-color="#c8872f"/>
-              <stop offset="75%" stop-color="#3a2410"/>
-              <stop offset="100%" stop-color="#170c20"/>
-            </radialGradient>
-            <linearGradient id="g2c" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#fff0c4"/>
-              <stop offset="55%" stop-color="#e8b94a"/>
-              <stop offset="100%" stop-color="#8a5e1e"/>
-            </linearGradient>
-          </defs>
-          <rect width="200" height="320" fill="url(#g2)"/>
-          <g stroke="#6b451a" stroke-width="1.5">
-            <ellipse cx="84" cy="252" rx="40" ry="13" fill="url(#g2c)"/>
-            <ellipse cx="84" cy="241" rx="40" ry="13" fill="url(#g2c)"/>
-            <ellipse cx="84" cy="230" rx="40" ry="13" fill="url(#g2c)"/>
-            <ellipse cx="84" cy="219" rx="40" ry="13" fill="#fff3d2"/>
-            <ellipse cx="136" cy="238" rx="28" ry="9.5" fill="url(#g2c)"/>
-            <ellipse cx="136" cy="228" rx="28" ry="9.5" fill="url(#g2c)"/>
-            <ellipse cx="136" cy="218" rx="28" ry="9.5" fill="#fff3d2"/>
-          </g>
-        </svg>
-      </div>
-      <span class="cap">Финансы и карьера</span>
-    </div>
-
-    <div class="tarot-card">
-      <div class="tarot-card__art">
-        <svg viewBox="0 0 200 320" preserveAspectRatio="xMidYMid slice">
-          <defs>
-            <radialGradient id="g3" cx="50%" cy="40%" r="46%">
-              <stop offset="0%" stop-color="#ffe3f3"/>
-              <stop offset="35%" stop-color="#e37bbf"/>
-              <stop offset="75%" stop-color="#401a44"/>
-              <stop offset="100%" stop-color="#170c20"/>
-            </radialGradient>
-            <linearGradient id="g3p" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#fff4fa"/>
-              <stop offset="100%" stop-color="#f0a8d6"/>
-            </linearGradient>
-          </defs>
-          <rect width="200" height="320" fill="url(#g3)"/>
-          <g transform="translate(100,220)" stroke="#a84f8c" stroke-width="1">
-            <path d="M0 0 C-10 -34 -4 -56 0 -62 C4 -56 10 -34 0 0Z" fill="url(#g3p)"/>
-            <path d="M0 0 C-34 -16 -48 -34 -50 -42 C-42 -40 -18 -24 0 0Z" fill="url(#g3p)" opacity=".95"/>
-            <path d="M0 0 C34 -16 48 -34 50 -42 C42 -40 18 -24 0 0Z" fill="url(#g3p)" opacity=".95"/>
-            <path d="M0 0 C-20 -6 -34 -16 -40 -26 C-30 -28 -12 -18 0 0Z" fill="url(#g3p)" opacity=".85"/>
-            <path d="M0 0 C20 -6 34 -16 40 -26 C30 -28 12 -18 0 0Z" fill="url(#g3p)" opacity=".85"/>
-            <path d="M-54 6 C-30 -6 -8 -2 0 6 C-8 16 -40 18 -54 6Z" fill="url(#g3p)"/>
-            <path d="M54 6 C30 -6 8 -2 0 6 C8 16 40 18 54 6Z" fill="url(#g3p)"/>
-            <circle r="9" fill="#fff8ec"/>
-          </g>
-        </svg>
-      </div>
-      <span class="cap">Развитие и цели</span>
-    </div>
-
-    <div class="tarot-card">
-      <div class="tarot-card__art">
-        <svg viewBox="0 0 200 320" preserveAspectRatio="xMidYMid slice">
-          <defs>
-            <linearGradient id="g4" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#2a1448"/>
-              <stop offset="45%" stop-color="#7a3a5a"/>
-              <stop offset="75%" stop-color="#d9823f"/>
-              <stop offset="100%" stop-color="#3a1a20"/>
-            </linearGradient>
-            <linearGradient id="g4s" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#fff0c4"/>
-              <stop offset="100%" stop-color="#c8872f"/>
-            </linearGradient>
-          </defs>
-          <rect width="200" height="320" fill="url(#g4)"/>
-          <path d="M0 250 Q60 224 100 240 Q150 258 200 228 L200 320 L0 320 Z" fill="#1c0d2e" opacity=".92"/>
-          <rect x="95" y="90" width="9" height="150" fill="#2a1710"/>
-          <g fill="url(#g4s)" stroke="#2a1710" stroke-width="1.5" stroke-linejoin="round">
-            <path d="M99 92 L158 100 L158 124 L99 116 Z"/>
-            <path d="M99 118 L48 132 L48 154 L99 142 Z"/>
-          </g>
-          <circle cx="99" cy="104" r="4" fill="#2a1710"/>
-          <circle cx="99" cy="130" r="4" fill="#2a1710"/>
-        </svg>
-      </div>
-      <span class="cap">Сложный выбор</span>
-    </div>
-
-    <div class="tarot-card">
-      <div class="tarot-card__art">
-        <svg viewBox="0 0 200 320" preserveAspectRatio="xMidYMid slice">
-          <defs>
-            <linearGradient id="g5" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#241046"/>
-              <stop offset="55%" stop-color="#1d0f38"/>
-              <stop offset="100%" stop-color="#120820"/>
-            </linearGradient>
-            <radialGradient id="g5m" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stop-color="#fff8e0"/>
-              <stop offset="100%" stop-color="#e8c56a"/>
-            </radialGradient>
-          </defs>
-          <rect width="200" height="320" fill="url(#g5)"/>
-          <circle cx="100" cy="92" r="32" fill="url(#g5m)"/>
-          <circle cx="114" cy="84" r="28" fill="#1d0f38"/>
-          <circle cx="36" cy="54" r="1.6" fill="#fff" opacity=".9"/>
-          <circle cx="58" cy="96" r="1.1" fill="#fff" opacity=".7"/>
-          <circle cx="152" cy="46" r="1.4" fill="#fff" opacity=".85"/>
-          <circle cx="172" cy="88" r="1.6" fill="#fff" opacity=".8"/>
-          <circle cx="26" cy="128" r="1.2" fill="#fff" opacity=".6"/>
-          <circle cx="166" cy="134" r="1.3" fill="#fff" opacity=".65"/>
-          <circle cx="90" cy="40" r="1.1" fill="#fff" opacity=".7"/>
-          <path d="M-10 250 Q40 212 90 234 Q130 252 170 220 Q195 200 210 216 L210 330 L-10 330 Z" fill="#150a28"/>
-          <path d="M-10 275 Q50 246 110 266 Q155 282 210 250 L210 330 L-10 330 Z" fill="#0d0718"/>
-        </svg>
-      </div>
-      <span class="cap">Любые жизненные ситуации</span>
-    </div>
-
-    <div class="fan-glow" aria-hidden="true"></div>
-  </div>
-</section>
-
-<!-- ========== БЛОК 5 — ГЛАВНОЕ ПРЕДЛОЖЕНИЕ ========== -->
-<section class="offer reveal">
-  <div class="offer__burst" aria-hidden="true"></div>
-  <div class="offer__fan">
-    <div class="mini">
-      <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="10" stroke="#f3d89a" stroke-width="1.2"/><path d="M24 14v20M14 24h20" stroke="#f3d89a" stroke-width="1"/></svg>
-    </div>
-    <div class="mini">
-      <svg viewBox="0 0 48 48" fill="none"><path d="M24 10l4 9 9 1-7 6 2 9-8-5-8 5 2-9-7-6 9-1z" stroke="#f3d89a" stroke-width="1.2" stroke-linejoin="round"/></svg>
-    </div>
-    <div class="mini">
-      <svg viewBox="0 0 48 48" fill="none"><path d="M24 34a14 14 0 100-28" stroke="#f3d89a" stroke-width="1.2"/><circle cx="24" cy="20" r="3" fill="#f3d89a" opacity=".8"/></svg>
-    </div>
-  </div>
-  <div class="offer__sep" aria-hidden="true"></div>
-  <div class="offer__text">
-    <p class="line1">Первый расклад</p>
-    <p class="line2">БЕСПЛАТНО</p>
-    <span class="line3">Оплата по результату</span>
-  </div>
+<!-- ========== БЛОК 4+5 — ТЕМЫ + ОФФЕР (картинка) ========== -->
+<section class="topics-offer-img container reveal">
+  <picture>
+    <source srcset="cards-offer.webp" type="image/webp">
+    <img src="cards-offer.png" alt="Темы обращений: отношения, финансы, развитие, сложный выбор, жизненные ситуации. Первый расклад бесплатно, оплата по результату" loading="lazy">
+  </picture>
+  <span class="payment-pill">Оплата по результату</span>
 </section>
 <p class="offer__terms container">Первый расклад не требует оплаты. Если захотите продолжить и углубиться в ситуацию — стоимость дальнейшей консультации обсудим отдельно, без скрытых условий.</p>
 
