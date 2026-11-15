@@ -67,47 +67,50 @@ src="https://www.facebook.com/tr?id=2178615639697523&ev=PageView&noscript=1"/></
 
   /* ---------- top label ---------- */
   .toplabel{
-    margin:0; padding:22px 20px 16px;
+    margin:0 auto; padding:20px 20px 14px;
+    max-width:340px;
     text-align:center;
     font-family:'Playfair Display', serif;
-    font-size:13px;
-    font-weight:600;
-    letter-spacing:.22em;
+    font-size:19px;
+    font-weight:700;
+    line-height:1.3;
+    letter-spacing:.06em;
     text-transform:uppercase;
     color:var(--gold-light);
-    text-shadow:0 0 20px rgba(216,178,106,.35);
+    text-shadow:0 0 24px rgba(216,178,106,.45);
   }
-  @media(min-width:768px){ .toplabel{ font-size:15px; padding:30px 20px 20px; } }
+  @media(min-width:768px){ .toplabel{ font-size:26px; max-width:none; padding:30px 20px 18px; letter-spacing:.1em; } }
 
   /* ---------- trust stats ---------- */
   .stats{
     display:flex; align-items:center; justify-content:center;
-    gap:22px;
-    padding:26px 20px 4px;
+    gap:26px;
+    padding:14px 20px 4px;
+    margin-top:-6px;
   }
   .stat{ display:flex; flex-direction:column; align-items:center; gap:4px; min-width:0; }
-  .stat svg{ width:18px; height:18px; margin-bottom:2px; }
+  .stat svg{ width:22px; height:22px; margin-bottom:2px; }
   .stat__num{
     font-family:'Playfair Display', serif;
     font-weight:700;
-    font-size:26px;
+    font-size:34px;
     color:var(--gold-light);
-    text-shadow:0 0 18px rgba(216,178,106,.4);
+    text-shadow:0 0 20px rgba(216,178,106,.5);
     line-height:1;
   }
   .stat__label{
-    font-size:11px;
+    font-size:12px;
     color:var(--text-mute);
     letter-spacing:.03em;
     text-align:center;
   }
-  .stat__divider{ width:1px; height:40px; background:linear-gradient(180deg, transparent, rgba(216,178,106,.5), transparent); flex-shrink:0; }
+  .stat__divider{ width:1px; height:46px; background:linear-gradient(180deg, transparent, rgba(216,178,106,.5), transparent); flex-shrink:0; }
   @media(min-width:768px){
-    .stats{ gap:40px; padding:34px 20px 6px; }
-    .stat svg{ width:22px; height:22px; }
-    .stat__num{ font-size:34px; }
-    .stat__label{ font-size:13px; }
-    .stat__divider{ height:50px; }
+    .stats{ gap:48px; padding:16px 20px 6px; }
+    .stat svg{ width:28px; height:28px; }
+    .stat__num{ font-size:42px; }
+    .stat__label{ font-size:14px; }
+    .stat__divider{ height:56px; }
   }
 
   /* ---------- reveal on scroll ---------- */
@@ -119,11 +122,11 @@ src="https://www.facebook.com/tr?id=2178615639697523&ev=PageView&noscript=1"/></
   .hero__photo{width:100%; height:100%; object-fit:cover; object-position:50% 8%; animation:heroZoom 16s ease-in-out infinite alternate;}
   .hero__fade{
     position:absolute; inset:0;
-    background:linear-gradient(to bottom, rgba(18,8,20,0) 42%, rgba(18,8,20,.55) 72%, var(--bg-deep) 97%);
+    background:linear-gradient(to bottom, rgba(18,8,20,0) 58%, rgba(18,8,20,.22) 80%, var(--bg-deep) 99%);
   }
   .hero__vignette{
     position:absolute; inset:0;
-    box-shadow:inset 0 0 18vw 2vw rgba(10,5,12,.55);
+    box-shadow:inset 0 0 12vw 1vw rgba(10,5,12,.35);
     pointer-events:none;
   }
   .hero__glow{
@@ -139,7 +142,7 @@ src="https://www.facebook.com/tr?id=2178615639697523&ev=PageView&noscript=1"/></
   /* ---------- BLOCK 2 — intro ---------- */
   .intro{padding:14px 20px 6px; text-align:center;}
   .intro h1{
-    font-size:clamp(30px, 7.5vw, 42px);
+    font-size:clamp(34px, 8.4vw, 46px);
     line-height:1.22;
     font-weight:700;
     color:var(--cream);
@@ -215,16 +218,26 @@ src="https://www.facebook.com/tr?id=2178615639697523&ev=PageView&noscript=1"/></
 
   /* ---------- BLOCK 4 — main offer ---------- */
   .offer{
+    position:relative;
     margin:10px 20px 0;
-    padding:26px 18px;
-    border-radius:20px;
+    padding:22px 22px;
+    border-radius:999px;
     border:1.4px solid rgba(216,178,106,.6);
-    background:linear-gradient(160deg, rgba(42,19,56,.85), rgba(29,15,38,.85));
-    box-shadow:0 0 50px rgba(216,178,106,.1), inset 0 0 30px rgba(216,178,106,.05);
+    background:linear-gradient(160deg, rgba(42,19,56,.9), rgba(23,12,32,.92));
+    box-shadow:0 0 50px rgba(216,178,106,.12), inset 0 0 30px rgba(216,178,106,.06), inset 0 0 0 4px rgba(216,178,106,.07);
     display:flex;
     align-items:center;
-    gap:16px;
+    gap:14px;
+    overflow:hidden;
   }
+  .offer__burst{
+    position:absolute; left:50%; top:50%; width:140%; aspect-ratio:1/1; transform:translate(-50%,-50%);
+    background:radial-gradient(circle, rgba(216,178,106,.3) 0%, rgba(216,178,106,0) 55%);
+    pointer-events:none; z-index:0;
+  }
+  .offer__fan, .offer__sep, .offer__text{ position:relative; z-index:1; }
+  .offer__sep{ width:1px; align-self:stretch; min-height:64px; background:linear-gradient(180deg, transparent, rgba(216,178,106,.55), transparent); flex-shrink:0; }
+  @media(min-width:768px){ .offer__sep{ min-height:86px; } }
   .offer__terms{
     margin:16px auto 0;
     padding:0 20px;
@@ -239,7 +252,7 @@ src="https://www.facebook.com/tr?id=2178615639697523&ev=PageView&noscript=1"/></
     .offer__fan{ max-width:160px; height:108px; }
     .offer__fan .mini{ width:58px; }
   }
-  .offer__fan{flex:0 0 auto; width:38%; max-width:130px; position:relative; height:84px;}
+  .offer__fan{flex:0 0 auto; width:32%; max-width:108px; position:relative; height:78px;}
   .offer__fan .mini{
     position:absolute; top:0; width:46px; aspect-ratio:2/3.2;
     border-radius:6px 6px 9px 9px; border:1px solid var(--gold);
@@ -253,9 +266,10 @@ src="https://www.facebook.com/tr?id=2178615639697523&ev=PageView&noscript=1"/></
   .offer__text{flex:1 1 auto; min-width:0;}
   .offer__text .line1{
     font-family:'Playfair Display',serif;
-    font-size:clamp(16px,4.2vw,19px);
+    font-size:clamp(14px,3.8vw,17px);
     color:var(--text-soft);
-    letter-spacing:.04em;
+    letter-spacing:.08em;
+    text-transform:uppercase;
     margin:0;
   }
   .offer__text .line2{
@@ -300,13 +314,14 @@ src="https://www.facebook.com/tr?id=2178615639697523&ev=PageView&noscript=1"/></
     transition:transform .2s ease, box-shadow .2s ease;
   }
   .btn-whatsapp:active{transform:scale(.97);}
-  .btn-whatsapp svg{width:22px; height:22px; flex-shrink:0;}
+  .btn-whatsapp svg{width:32px; height:32px; flex-shrink:0;}
   .cta__note{margin-top:14px; font-size:12px; color:var(--text-mute);}
   @media(hover:hover){
     .btn-whatsapp:hover{ transform:translateY(-2px); box-shadow:0 18px 38px rgba(37,211,102,.42), inset 0 1px 0 rgba(255,255,255,.3); }
   }
   @media(min-width:768px){
     .btn-whatsapp{ max-width:480px; padding:20px 24px; font-size:18.5px; border-radius:18px; }
+    .btn-whatsapp svg{ width:36px; height:36px; }
   }
 
   /* sticky floating button */
@@ -325,11 +340,18 @@ src="https://www.facebook.com/tr?id=2178615639697523&ev=PageView&noscript=1"/></
   @supports(padding:max(0px)){ .fab{ bottom:max(16px, env(safe-area-inset-bottom)); } }
 
   /* ---------- BLOCK 7 — final ---------- */
-  .final{position:relative; padding:46px 24px 14px; text-align:center; overflow:hidden;}
-  .final__crystal{position:absolute; width:52px; height:52px; opacity:.8; pointer-events:none;}
-  .final__crystal--l{ left:4%; bottom:10px; }
-  .final__crystal--r{ right:4%; bottom:10px; transform:scaleX(-1); }
-  .final__wave{position:absolute; left:0; right:0; bottom:0; width:100%; height:50px; pointer-events:none; z-index:-1;}
+  .final{position:relative; padding:46px 24px 30px; text-align:center; overflow:visible;}
+  .final__crystal{position:absolute; width:62px; height:62px; opacity:.9; pointer-events:none; filter:drop-shadow(0 0 14px rgba(138,86,191,.35));}
+  .final__crystal--l{ left:2%; bottom:-14px; }
+  .final__crystal--r{ right:2%; bottom:-14px; transform:scaleX(-1); }
+  @media(min-width:768px){
+    .final__crystal{ width:84px; height:84px; }
+    .final__crystal--l{ left:6%; } .final__crystal--r{ right:6%; }
+  }
+  .silk{ position:relative; width:100%; height:70px; margin-top:-10px; z-index:0; }
+  .silk svg{ width:100%; height:100%; display:block; }
+  @media(min-width:768px){ .silk{ height:110px; } }
+  footer{ position:relative; z-index:1; margin-top:-30px; }
   .final p.quote{
     font-family:'Playfair Display',serif;
     font-style:italic;
@@ -400,23 +422,21 @@ src="https://www.facebook.com/tr?id=2178615639697523&ev=PageView&noscript=1"/></
       <div class="tarot-card__art">
         <svg viewBox="0 0 200 320" preserveAspectRatio="xMidYMid slice">
           <defs>
-            <radialGradient id="g1" cx="50%" cy="38%" r="65%">
-              <stop offset="0%" stop-color="#5a2a52"/>
-              <stop offset="55%" stop-color="#2c1434"/>
+            <radialGradient id="g1" cx="50%" cy="34%" r="42%">
+              <stop offset="0%" stop-color="#ff9ec4"/>
+              <stop offset="35%" stop-color="#b14f8c"/>
+              <stop offset="70%" stop-color="#3c1a40"/>
               <stop offset="100%" stop-color="#170c20"/>
             </radialGradient>
-            <linearGradient id="g1h" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#f6c9e0"/>
-              <stop offset="100%" stop-color="#b85a8c"/>
-            </linearGradient>
           </defs>
           <rect width="200" height="320" fill="url(#g1)"/>
-          <circle cx="100" cy="150" r="46" fill="none" stroke="#e8a9c8" stroke-width="1" opacity=".35"/>
-          <path d="M100 185c-10-12-22-10-22 2 0 10 10 18 22 26 12-8 22-16 22-26 0-12-12-14-22-2z" fill="url(#g1h)" opacity=".9"/>
-          <path d="M62 250c0-30 14-46 30-46 8 0 14 4 18 10" fill="none" stroke="#2c1434" stroke-width="30" stroke-linecap="round"/>
-          <path d="M138 250c0-30-14-46-30-46-8 0-14 4-18 10" fill="none" stroke="#1d0f26" stroke-width="30" stroke-linecap="round"/>
-          <circle cx="78" cy="196" r="15" fill="#2c1434"/>
-          <circle cx="122" cy="196" r="15" fill="#1d0f26"/>
+          <path d="M-10 290 L30 230 L55 260 L95 220 L120 255 L150 225 L210 280 L210 330 L-10 330 Z" fill="#140b1c"/>
+          <circle cx="72" cy="150" r="21" fill="#140b1c"/>
+          <path d="M91 150 L104 144 L104 156 Z" fill="#140b1c"/>
+          <path d="M48 230 C48 194 58 176 72 176 C86 176 96 194 96 230 Z" fill="#140b1c"/>
+          <circle cx="128" cy="150" r="21" fill="#0f0916"/>
+          <path d="M109 150 L96 144 L96 156 Z" fill="#0f0916"/>
+          <path d="M104 230 C104 194 114 176 128 176 C142 176 152 194 152 230 Z" fill="#0f0916"/>
         </svg>
       </div>
       <span class="cap">Отношения и чувства</span>
@@ -426,25 +446,27 @@ src="https://www.facebook.com/tr?id=2178615639697523&ev=PageView&noscript=1"/></
       <div class="tarot-card__art">
         <svg viewBox="0 0 200 320" preserveAspectRatio="xMidYMid slice">
           <defs>
-            <radialGradient id="g2" cx="50%" cy="40%" r="65%">
-              <stop offset="0%" stop-color="#4a3418"/>
-              <stop offset="55%" stop-color="#271a2e"/>
+            <radialGradient id="g2" cx="50%" cy="36%" r="46%">
+              <stop offset="0%" stop-color="#ffe9ad"/>
+              <stop offset="40%" stop-color="#c8872f"/>
+              <stop offset="75%" stop-color="#3a2410"/>
               <stop offset="100%" stop-color="#170c20"/>
             </radialGradient>
             <linearGradient id="g2c" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#f6dfa0"/>
-              <stop offset="100%" stop-color="#a8793a"/>
+              <stop offset="0%" stop-color="#fff0c4"/>
+              <stop offset="55%" stop-color="#e8b94a"/>
+              <stop offset="100%" stop-color="#8a5e1e"/>
             </linearGradient>
           </defs>
           <rect width="200" height="320" fill="url(#g2)"/>
-          <g>
-            <ellipse cx="100" cy="246" rx="46" ry="14" fill="url(#g2c)"/>
-            <ellipse cx="100" cy="238" rx="46" ry="14" fill="url(#g2c)"/>
-            <ellipse cx="100" cy="230" rx="46" ry="14" fill="#f3d89a"/>
-            <ellipse cx="72" cy="206" rx="34" ry="11" fill="url(#g2c)"/>
-            <ellipse cx="72" cy="199" rx="34" ry="11" fill="#f3d89a"/>
-            <ellipse cx="128" cy="190" rx="30" ry="10" fill="url(#g2c)"/>
-            <ellipse cx="128" cy="183" rx="30" ry="10" fill="#f3d89a"/>
+          <g stroke="#6b451a" stroke-width="1.5">
+            <ellipse cx="84" cy="252" rx="40" ry="13" fill="url(#g2c)"/>
+            <ellipse cx="84" cy="241" rx="40" ry="13" fill="url(#g2c)"/>
+            <ellipse cx="84" cy="230" rx="40" ry="13" fill="url(#g2c)"/>
+            <ellipse cx="84" cy="219" rx="40" ry="13" fill="#fff3d2"/>
+            <ellipse cx="136" cy="238" rx="28" ry="9.5" fill="url(#g2c)"/>
+            <ellipse cx="136" cy="228" rx="28" ry="9.5" fill="url(#g2c)"/>
+            <ellipse cx="136" cy="218" rx="28" ry="9.5" fill="#fff3d2"/>
           </g>
         </svg>
       </div>
@@ -455,26 +477,27 @@ src="https://www.facebook.com/tr?id=2178615639697523&ev=PageView&noscript=1"/></
       <div class="tarot-card__art">
         <svg viewBox="0 0 200 320" preserveAspectRatio="xMidYMid slice">
           <defs>
-            <radialGradient id="g3" cx="50%" cy="42%" r="60%">
-              <stop offset="0%" stop-color="#5a2550"/>
-              <stop offset="55%" stop-color="#2a1338"/>
+            <radialGradient id="g3" cx="50%" cy="40%" r="46%">
+              <stop offset="0%" stop-color="#ffe3f3"/>
+              <stop offset="35%" stop-color="#e37bbf"/>
+              <stop offset="75%" stop-color="#401a44"/>
               <stop offset="100%" stop-color="#170c20"/>
             </radialGradient>
             <linearGradient id="g3p" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#ffd9ea"/>
-              <stop offset="100%" stop-color="#e38fc0"/>
+              <stop offset="0%" stop-color="#fff4fa"/>
+              <stop offset="100%" stop-color="#f0a8d6"/>
             </linearGradient>
           </defs>
           <rect width="200" height="320" fill="url(#g3)"/>
-          <g transform="translate(100,210)">
-            <ellipse rx="14" ry="38" fill="url(#g3p)" opacity=".95"/>
-            <ellipse rx="14" ry="38" fill="url(#g3p)" opacity=".9" transform="rotate(45)"/>
-            <ellipse rx="14" ry="38" fill="url(#g3p)" opacity=".9" transform="rotate(-45)"/>
-            <ellipse rx="14" ry="30" fill="url(#g3p)" opacity=".95" transform="rotate(90)"/>
-            <ellipse rx="14" ry="30" fill="url(#g3p)" opacity=".95" transform="rotate(-90)"/>
-            <ellipse rx="14" ry="26" fill="#f3d89a" transform="rotate(22)"/>
-            <ellipse rx="14" ry="26" fill="#f3d89a" transform="rotate(-22)"/>
-            <circle r="12" fill="#fff3da"/>
+          <g transform="translate(100,220)" stroke="#a84f8c" stroke-width="1">
+            <path d="M0 0 C-10 -34 -4 -56 0 -62 C4 -56 10 -34 0 0Z" fill="url(#g3p)"/>
+            <path d="M0 0 C-34 -16 -48 -34 -50 -42 C-42 -40 -18 -24 0 0Z" fill="url(#g3p)" opacity=".95"/>
+            <path d="M0 0 C34 -16 48 -34 50 -42 C42 -40 18 -24 0 0Z" fill="url(#g3p)" opacity=".95"/>
+            <path d="M0 0 C-20 -6 -34 -16 -40 -26 C-30 -28 -12 -18 0 0Z" fill="url(#g3p)" opacity=".85"/>
+            <path d="M0 0 C20 -6 34 -16 40 -26 C30 -28 12 -18 0 0Z" fill="url(#g3p)" opacity=".85"/>
+            <path d="M-54 6 C-30 -6 -8 -2 0 6 C-8 16 -40 18 -54 6Z" fill="url(#g3p)"/>
+            <path d="M54 6 C30 -6 8 -2 0 6 C8 16 40 18 54 6Z" fill="url(#g3p)"/>
+            <circle r="9" fill="#fff8ec"/>
           </g>
         </svg>
       </div>
@@ -486,23 +509,25 @@ src="https://www.facebook.com/tr?id=2178615639697523&ev=PageView&noscript=1"/></
         <svg viewBox="0 0 200 320" preserveAspectRatio="xMidYMid slice">
           <defs>
             <linearGradient id="g4" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#4a2a4e"/>
-              <stop offset="55%" stop-color="#5a3826"/>
-              <stop offset="100%" stop-color="#170c20"/>
+              <stop offset="0%" stop-color="#2a1448"/>
+              <stop offset="45%" stop-color="#7a3a5a"/>
+              <stop offset="75%" stop-color="#d9823f"/>
+              <stop offset="100%" stop-color="#3a1a20"/>
             </linearGradient>
             <linearGradient id="g4s" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#f6dfa0"/>
-              <stop offset="100%" stop-color="#a8793a"/>
+              <stop offset="0%" stop-color="#fff0c4"/>
+              <stop offset="100%" stop-color="#c8872f"/>
             </linearGradient>
           </defs>
           <rect width="200" height="320" fill="url(#g4)"/>
-          <rect x="94" y="110" width="12" height="150" fill="#3a2418"/>
-          <g fill="url(#g4s)" stroke="#170c20" stroke-width="1.5">
-            <path d="M100 110 L150 118 L150 142 L100 134 Z"/>
-            <path d="M100 136 L58 148 L58 170 L100 158 Z"/>
-            <path d="M100 160 L146 176 L146 198 L100 182 Z"/>
+          <path d="M0 250 Q60 224 100 240 Q150 258 200 228 L200 320 L0 320 Z" fill="#1c0d2e" opacity=".92"/>
+          <rect x="95" y="90" width="9" height="150" fill="#2a1710"/>
+          <g fill="url(#g4s)" stroke="#2a1710" stroke-width="1.5" stroke-linejoin="round">
+            <path d="M99 92 L158 100 L158 124 L99 116 Z"/>
+            <path d="M99 118 L48 132 L48 154 L99 142 Z"/>
           </g>
-          <path d="M20 270 Q100 250 180 270 L180 320 L20 320 Z" fill="#170c20" opacity=".8"/>
+          <circle cx="99" cy="104" r="4" fill="#2a1710"/>
+          <circle cx="99" cy="130" r="4" fill="#2a1710"/>
         </svg>
       </div>
       <span class="cap">Сложный выбор</span>
@@ -514,21 +539,26 @@ src="https://www.facebook.com/tr?id=2178615639697523&ev=PageView&noscript=1"/></
           <defs>
             <linearGradient id="g5" x1="0" y1="0" x2="0" y2="1">
               <stop offset="0%" stop-color="#241046"/>
-              <stop offset="60%" stop-color="#1d0f38"/>
+              <stop offset="55%" stop-color="#1d0f38"/>
               <stop offset="100%" stop-color="#120820"/>
             </linearGradient>
+            <radialGradient id="g5m" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#fff8e0"/>
+              <stop offset="100%" stop-color="#e8c56a"/>
+            </radialGradient>
           </defs>
           <rect width="200" height="320" fill="url(#g5)"/>
-          <circle cx="104" cy="96" r="34" fill="#f6dfa0"/>
-          <circle cx="118" cy="88" r="30" fill="url(#g5)"/>
-          <circle cx="40" cy="60" r="1.6" fill="#f3d89a"/>
-          <circle cx="60" cy="100" r="1.2" fill="#f3d89a" opacity=".8"/>
-          <circle cx="150" cy="50" r="1.4" fill="#f3d89a"/>
-          <circle cx="170" cy="90" r="1.6" fill="#f3d89a" opacity=".8"/>
-          <circle cx="30" cy="130" r="1.2" fill="#f3d89a" opacity=".7"/>
-          <circle cx="160" cy="140" r="1.3" fill="#f3d89a" opacity=".7"/>
-          <path d="M0 230 Q50 200 90 222 Q130 244 160 214 Q185 196 200 210 L200 320 L0 320 Z" fill="#170c20"/>
-          <path d="M0 250 Q60 228 110 246 Q150 260 200 236 L200 320 L0 320 Z" fill="#0f0718"/>
+          <circle cx="100" cy="92" r="32" fill="url(#g5m)"/>
+          <circle cx="114" cy="84" r="28" fill="#1d0f38"/>
+          <circle cx="36" cy="54" r="1.6" fill="#fff" opacity=".9"/>
+          <circle cx="58" cy="96" r="1.1" fill="#fff" opacity=".7"/>
+          <circle cx="152" cy="46" r="1.4" fill="#fff" opacity=".85"/>
+          <circle cx="172" cy="88" r="1.6" fill="#fff" opacity=".8"/>
+          <circle cx="26" cy="128" r="1.2" fill="#fff" opacity=".6"/>
+          <circle cx="166" cy="134" r="1.3" fill="#fff" opacity=".65"/>
+          <circle cx="90" cy="40" r="1.1" fill="#fff" opacity=".7"/>
+          <path d="M-10 250 Q40 212 90 234 Q130 252 170 220 Q195 200 210 216 L210 330 L-10 330 Z" fill="#150a28"/>
+          <path d="M-10 275 Q50 246 110 266 Q155 282 210 250 L210 330 L-10 330 Z" fill="#0d0718"/>
         </svg>
       </div>
       <span class="cap">Любые жизненные ситуации</span>
@@ -540,6 +570,7 @@ src="https://www.facebook.com/tr?id=2178615639697523&ev=PageView&noscript=1"/></
 
 <!-- ========== БЛОК 5 — ГЛАВНОЕ ПРЕДЛОЖЕНИЕ ========== -->
 <section class="offer reveal">
+  <div class="offer__burst" aria-hidden="true"></div>
   <div class="offer__fan">
     <div class="mini">
       <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="10" stroke="#f3d89a" stroke-width="1.2"/><path d="M24 14v20M14 24h20" stroke="#f3d89a" stroke-width="1"/></svg>
@@ -551,6 +582,7 @@ src="https://www.facebook.com/tr?id=2178615639697523&ev=PageView&noscript=1"/></
       <svg viewBox="0 0 48 48" fill="none"><path d="M24 34a14 14 0 100-28" stroke="#f3d89a" stroke-width="1.2"/><circle cx="24" cy="20" r="3" fill="#f3d89a" opacity=".8"/></svg>
     </div>
   </div>
+  <div class="offer__sep" aria-hidden="true"></div>
   <div class="offer__text">
     <p class="line1">Первый расклад</p>
     <p class="line2">БЕСПЛАТНО</p>
@@ -575,12 +607,39 @@ src="https://www.facebook.com/tr?id=2178615639697523&ev=PageView&noscript=1"/></
 
 <!-- ========== БЛОК 7 — ФИНАЛЬНЫЙ ПРИЗЫВ ========== -->
 <section class="final reveal">
-  <svg class="final__crystal final__crystal--l" viewBox="0 0 60 60" fill="none"><path d="M30 4 50 20 42 56 18 56 10 20Z" fill="#6b3f8f" opacity=".35"/><path d="M30 4 50 20 30 30Z" fill="#8a5bb0" opacity=".4"/><path d="M30 4 10 20 30 30Z" fill="#7549a0" opacity=".4"/></svg>
-  <svg class="final__crystal final__crystal--r" viewBox="0 0 60 60" fill="none"><path d="M30 4 50 20 42 56 18 56 10 20Z" fill="#6b3f8f" opacity=".35"/><path d="M30 4 50 20 30 30Z" fill="#8a5bb0" opacity=".4"/><path d="M30 4 10 20 30 30Z" fill="#7549a0" opacity=".4"/></svg>
+  <svg class="final__crystal final__crystal--l" viewBox="0 0 80 80" fill="none">
+    <defs><linearGradient id="cryL" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#c79bf0"/><stop offset="100%" stop-color="#5a2e86"/></linearGradient></defs>
+    <path d="M40 4 62 24 52 74 28 74 18 24Z" fill="url(#cryL)" opacity=".55"/>
+    <path d="M40 4 62 24 40 36Z" fill="#dcb8f7" opacity=".6"/>
+    <path d="M40 4 18 24 40 36Z" fill="#8a56bf" opacity=".55"/>
+    <path d="M28 74 40 36 52 74Z" fill="#3d1d5c" opacity=".6"/>
+    <path d="M54 50 70 40 64 62 50 66Z" fill="url(#cryL)" opacity=".4"/>
+  </svg>
+  <svg class="final__crystal final__crystal--r" viewBox="0 0 80 80" fill="none">
+    <defs><linearGradient id="cryR" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#c79bf0"/><stop offset="100%" stop-color="#5a2e86"/></linearGradient></defs>
+    <path d="M40 4 62 24 52 74 28 74 18 24Z" fill="url(#cryR)" opacity=".55"/>
+    <path d="M40 4 62 24 40 36Z" fill="#dcb8f7" opacity=".6"/>
+    <path d="M40 4 18 24 40 36Z" fill="#8a56bf" opacity=".55"/>
+    <path d="M28 74 40 36 52 74Z" fill="#3d1d5c" opacity=".6"/>
+    <path d="M54 50 70 40 64 62 50 66Z" fill="url(#cryR)" opacity=".4"/>
+  </svg>
   <p class="quote">Не откладывайте важный для себя вопрос — сделайте первый шаг к ясности уже сегодня.</p>
   <p class="privacy">Все обращения конфиденциальны. Информация, полученная на консультации, носит ознакомительный характер и не заменяет профессиональную медицинскую, юридическую или финансовую консультацию.</p>
-  <svg class="final__wave" viewBox="0 0 400 60" preserveAspectRatio="none"><path d="M0 30 Q100 10 200 30 T400 30 V60 H0 Z" fill="#3a1a4a" opacity=".5"/><path d="M0 40 Q100 20 200 40 T400 40 V60 H0 Z" fill="#2a1338" opacity=".7"/></svg>
 </section>
+
+<div class="silk" aria-hidden="true">
+  <svg viewBox="0 0 400 100" preserveAspectRatio="none">
+    <defs>
+      <linearGradient id="silkG" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#5a2e70"/>
+        <stop offset="100%" stop-color="#1d0f26"/>
+      </linearGradient>
+    </defs>
+    <path d="M0 46 C60 24 110 58 170 40 C230 22 270 54 400 32 V100 H0 Z" fill="url(#silkG)" opacity=".55"/>
+    <path d="M0 62 C70 42 120 70 190 56 C250 44 300 66 400 50 V100 H0 Z" fill="#3a1a4a" opacity=".65"/>
+    <path d="M0 76 C80 60 140 82 210 72 C270 64 320 80 400 66 V100 H0 Z" fill="#2a1338"/>
+  </svg>
+</div>
 
 <footer>
   © <span id="year"></span> Консультации по картам Таро. Все права защищены.
