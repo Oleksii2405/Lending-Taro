@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Таролог — первый расклад бесплатно</title>
 <meta name="description" content="Индивидуальный расклад Таро. Более 10 лет практики. Первый расклад бесплатно — оплата по результату.">
-<meta name="robots" content="noindex" data-note="уберите тег noindex перед публикацией сайта">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -62,56 +61,77 @@ src="https://www.facebook.com/tr?id=2178615639697523&ev=PageView&noscript=1"/></
   .container{max-width:640px; margin:0 auto; padding:0 20px;}
   img{max-width:100%; display:block;}
   a{text-decoration:none; color:inherit;}
-  .accent{color:var(--gold-light); text-shadow:0 0 18px rgba(216,178,106,.35);}
+  .accent{color:var(--gold-light); text-shadow:0 0 22px rgba(216,178,106,.5);}
+  @media(min-width:1024px){ .container{max-width:900px;} }
+  @media(min-width:1400px){ .container{max-width:980px;} }
 
   /* ---------- reveal on scroll ---------- */
   .reveal{opacity:0; transform:translateY(26px); transition:opacity .7s ease, transform .7s ease;}
   .reveal.in-view{opacity:1; transform:translateY(0);}
 
   /* ---------- BLOCK 1 — hero photo ---------- */
-  .hero{position:relative; width:100%; aspect-ratio:4/5; overflow:hidden;}
-  .hero__photo{width:100%; height:100%; object-fit:cover; object-position:52% 14%;}
+  .hero{position:relative; width:100%; aspect-ratio:4/5; max-height:92vh; overflow:hidden;}
+  .hero__photo{width:100%; height:100%; object-fit:cover; object-position:52% 14%; animation:heroZoom 16s ease-in-out infinite alternate;}
   .hero__fade{
     position:absolute; inset:0;
-    background:linear-gradient(to bottom, rgba(18,8,20,0) 45%, var(--bg-deep) 96%);
+    background:linear-gradient(to bottom, rgba(18,8,20,0) 42%, rgba(18,8,20,.55) 72%, var(--bg-deep) 97%);
+  }
+  .hero__vignette{
+    position:absolute; inset:0;
+    box-shadow:inset 0 0 18vw 2vw rgba(10,5,12,.55);
+    pointer-events:none;
   }
   .hero__glow{
     position:absolute; left:50%; top:8%; width:70%; aspect-ratio:1/1; transform:translateX(-50%);
     background:radial-gradient(circle, rgba(216,178,106,.16) 0%, rgba(216,178,106,0) 70%);
     pointer-events:none;
   }
-  @media(min-width:600px){ .hero{aspect-ratio:1/1;} .hero__photo{object-position:52% 20%;} }
-  @media(min-width:1024px){ .hero{aspect-ratio:16/7;} .hero__photo{object-position:50% 28%;} }
+  @keyframes heroZoom{ from{ transform:scale(1); } to{ transform:scale(1.06); } }
+  @media(min-width:600px){ .hero{aspect-ratio:5/6; max-height:82vh;} .hero__photo{object-position:52% 16%;} }
+  @media(min-width:1024px){ .hero{aspect-ratio:21/11; max-height:640px;} .hero__photo{object-position:50% 18%;} }
+  @media(min-width:1400px){ .hero{aspect-ratio:21/9; max-height:700px;} .hero__photo{object-position:50% 20%;} }
 
   /* ---------- BLOCK 2 — intro ---------- */
-  .intro{padding:26px 20px 6px; text-align:center;}
+  .intro{padding:30px 20px 6px; text-align:center;}
   .badge{
-    display:inline-block;
-    padding:9px 22px;
-    margin-bottom:22px;
-    border:1px solid rgba(216,178,106,.55);
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:11px 26px;
+    margin-bottom:26px;
+    border:1.3px solid rgba(216,178,106,.65);
     border-radius:999px;
-    font-size:12.5px;
-    letter-spacing:.14em;
+    font-size:13.5px;
+    font-weight:600;
+    letter-spacing:.16em;
     color:var(--gold-light);
-    background:linear-gradient(180deg, rgba(216,178,106,.1), rgba(216,178,106,.02));
-    box-shadow:0 0 24px rgba(216,178,106,.12);
+    background:linear-gradient(180deg, rgba(216,178,106,.14), rgba(216,178,106,.03));
+    box-shadow:0 0 30px rgba(216,178,106,.18), inset 0 1px 0 rgba(255,255,255,.08);
     text-transform:uppercase;
   }
+  .badge svg{width:14px; height:14px; flex-shrink:0;}
   .intro h1{
-    font-size:clamp(26px, 6.4vw, 38px);
-    line-height:1.28;
-    font-weight:600;
+    font-size:clamp(30px, 7.5vw, 42px);
+    line-height:1.22;
+    font-weight:700;
     color:var(--cream);
-    margin:0 0 18px;
+    letter-spacing:-.01em;
+    text-shadow:0 2px 30px rgba(0,0,0,.4);
+    margin:0 0 20px;
   }
   .intro .lead{
-    font-size:15.5px;
-    line-height:1.65;
+    font-size:16.5px;
+    line-height:1.68;
     color:var(--text-soft);
     max-width:480px;
     margin:0 auto;
   }
+  @media(min-width:768px){
+    .intro h1{ font-size:clamp(44px, 5.4vw, 56px); margin-bottom:24px; }
+    .intro .lead{ font-size:19px; max-width:620px; }
+    .badge{ font-size:14.5px; padding:13px 30px; }
+  }
+  @media(min-width:1400px){ .intro h1{ font-size:62px; } }
 
   /* ---------- divider ---------- */
   .divider{display:flex; align-items:center; justify-content:center; gap:14px; margin:38px 0; opacity:.7;}
@@ -122,10 +142,11 @@ src="https://www.facebook.com/tr?id=2178615639697523&ev=PageView&noscript=1"/></
   .topics{padding:4px 0 10px;}
   .topics h2{
     text-align:center;
-    font-size:clamp(20px,4.6vw,26px);
+    font-size:clamp(22px,4.6vw,28px);
     color:var(--cream);
-    font-weight:600;
-    margin:0 0 30px;
+    font-weight:700;
+    letter-spacing:-.005em;
+    margin:0 0 34px;
   }
   .tarot-fan{
     display:flex;
@@ -138,17 +159,24 @@ src="https://www.facebook.com/tr?id=2178615639697523&ev=PageView&noscript=1"/></
     width:clamp(54px, 15.5vw, 94px);
     aspect-ratio:2/3.2;
     margin-left:clamp(-24px,-6.6vw,-16px);
+    transition:transform .6s cubic-bezier(.2,.7,.3,1), opacity .6s ease, box-shadow .25s ease;
     border-radius:8px 8px 11px 11px;
     background:linear-gradient(160deg, #241330 0%, #170c20 100%);
     border:1.4px solid var(--gold);
     box-shadow:0 10px 22px rgba(0,0,0,.45), inset 0 0 10px rgba(216,178,106,.12);
     display:flex; flex-direction:column; align-items:center; justify-content:flex-start;
     padding:8% 6% 6%;
-    transition:transform .6s cubic-bezier(.2,.7,.3,1), opacity .6s ease;
     transform-origin:bottom center;
     opacity:0;
   }
   .tarot-card:first-child{margin-left:0;}
+  @media(hover:hover){
+    .tarot-card:hover{ transform:translateY(-8px) scale(1.04) !important; box-shadow:0 16px 30px rgba(0,0,0,.5), inset 0 0 12px rgba(216,178,106,.2), 0 0 24px rgba(216,178,106,.25); z-index:5 !important; }
+  }
+  @media(min-width:1024px){
+    .tarot-card{ width:clamp(94px, 9vw, 128px); margin-left:clamp(-28px,-2.2vw,-20px); }
+    .tarot-card .cap{ font-size:12px; }
+  }
   .tarot-card .icon{width:62%; aspect-ratio:1/1; margin-bottom:8%;}
   .tarot-card .cap{
     font-size:clamp(7.2px, 1.9vw, 9.5px);
@@ -174,6 +202,20 @@ src="https://www.facebook.com/tr?id=2178615639697523&ev=PageView&noscript=1"/></
     display:flex;
     align-items:center;
     gap:16px;
+    cursor:pointer;
+    transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+  }
+  .offer:active{ transform:scale(.98); }
+  @media(hover:hover){
+    .offer:hover{ transform:translateY(-3px); border-color:var(--gold-light); box-shadow:0 0 64px rgba(216,178,106,.22), inset 0 0 30px rgba(216,178,106,.08); }
+    .offer:hover .offer__arrow{ transform:translateX(4px); }
+  }
+  .offer__arrow{ flex:0 0 auto; width:28px; height:28px; display:flex; align-items:center; justify-content:center; opacity:.8; transition:transform .25s ease; }
+  .offer__arrow svg{ width:22px; height:22px; }
+  @media(min-width:768px){
+    .offer{ padding:38px 36px; border-radius:26px; max-width:720px; margin-left:auto; margin-right:auto; }
+    .offer__fan{ max-width:160px; height:108px; }
+    .offer__fan .mini{ width:58px; }
   }
   .offer__fan{flex:0 0 auto; width:38%; max-width:130px; position:relative; height:84px;}
   .offer__fan .mini{
@@ -208,6 +250,11 @@ src="https://www.facebook.com/tr?id=2178615639697523&ev=PageView&noscript=1"/></
     color:var(--text-mute);
     letter-spacing:.03em;
   }
+  @media(min-width:768px){
+    .offer__text .line1{ font-size:22px; }
+    .offer__text .line2{ font-size:46px; }
+    .offer__text .line3{ font-size:15px; }
+  }
 
   /* ---------- BLOCK 5 — benefits ---------- */
   .benefits{
@@ -228,7 +275,7 @@ src="https://www.facebook.com/tr?id=2178615639697523&ev=PageView&noscript=1"/></
     position:absolute; left:0; top:8px; bottom:8px; width:1px;
     background:linear-gradient(180deg, transparent, rgba(216,178,106,.35), transparent);
   }
-  .benefit svg{width:22px; height:22px; margin-bottom:9px; stroke:var(--gold-light);}
+  .benefit svg{width:22px; height:22px; margin-bottom:9px; stroke:var(--gold-light); transition:transform .25s ease;}
   .benefit span{
     display:block;
     font-size:10.8px;
@@ -236,6 +283,12 @@ src="https://www.facebook.com/tr?id=2178615639697523&ev=PageView&noscript=1"/></
     color:var(--text-soft);
     overflow-wrap:break-word;
     hyphens:auto;
+  }
+  @media(hover:hover){ .benefit:hover svg{ transform:scale(1.15); filter:drop-shadow(0 0 8px rgba(216,178,106,.5)); } }
+  @media(min-width:768px){
+    .benefits{ max-width:760px; margin:0 auto; padding:44px 14px 10px; }
+    .benefit svg{ width:28px; height:28px; margin-bottom:12px; }
+    .benefit span{ font-size:14px; }
   }
 
   /* ---------- BLOCK 6 — WhatsApp CTA ---------- */
@@ -257,6 +310,12 @@ src="https://www.facebook.com/tr?id=2178615639697523&ev=PageView&noscript=1"/></
   .btn-whatsapp:active{transform:scale(.97);}
   .btn-whatsapp svg{width:22px; height:22px; flex-shrink:0;}
   .cta__note{margin-top:14px; font-size:12px; color:var(--text-mute);}
+  @media(hover:hover){
+    .btn-whatsapp:hover{ transform:translateY(-2px); box-shadow:0 18px 38px rgba(37,211,102,.42), inset 0 1px 0 rgba(255,255,255,.3); }
+  }
+  @media(min-width:768px){
+    .btn-whatsapp{ max-width:480px; padding:20px 24px; font-size:18.5px; border-radius:18px; }
+  }
 
   /* sticky floating button */
   .fab{
@@ -270,6 +329,7 @@ src="https://www.facebook.com/tr?id=2178615639697523&ev=PageView&noscript=1"/></
   }
   .fab.show{opacity:1; transform:translateY(0) scale(1); pointer-events:auto;}
   .fab svg{width:27px; height:27px;}
+  @media(hover:hover){ .fab:hover{ transform:translateY(-3px) scale(1.06); } }
   @supports(padding:max(0px)){ .fab{ bottom:max(16px, env(safe-area-inset-bottom)); } }
 
   /* ---------- BLOCK 7 — final ---------- */
@@ -290,6 +350,9 @@ src="https://www.facebook.com/tr?id=2178615639697523&ev=PageView&noscript=1"/></
     margin:0 auto;
     line-height:1.6;
   }
+  @media(min-width:768px){
+    .final p.quote{ font-size:24px; max-width:600px; }
+  }
   footer{
     text-align:center;
     padding:26px 20px 90px;
@@ -305,12 +368,13 @@ src="https://www.facebook.com/tr?id=2178615639697523&ev=PageView&noscript=1"/></
 <section class="hero">
   <img class="hero__photo" src="master.jpg" alt="Таролог раскладывает карты Таро при свечах">
   <div class="hero__glow"></div>
+  <div class="hero__vignette"></div>
   <div class="hero__fade"></div>
 </section>
 
 <!-- ========== БЛОК 2 — ОПЫТ И ЗАГОЛОВОК ========== -->
 <section class="intro container reveal">
-  <span class="badge">Более 10 лет практики Таро</span>
+  <span class="badge"><svg viewBox="0 0 24 24" fill="#f3d89a"><path d="M12 2l2.2 7.8L22 12l-7.8 2.2L12 22l-2.2-7.8L2 12l7.8-2.2L12 2z"/></svg>Более 10 лет практики Таро</span>
   <h1>Найдите ответы на <span class="accent">важные для вас</span> вопросы</h1>
   <p class="lead">Разберём вашу ситуацию, рассмотрим скрытые факторы и возможные пути решения. Индивидуальный расклад поможет взглянуть на происходящее с другой стороны.</p>
 </section>
@@ -380,7 +444,7 @@ src="https://www.facebook.com/tr?id=2178615639697523&ev=PageView&noscript=1"/></
 </section>
 
 <!-- ========== БЛОК 4 — ГЛАВНОЕ ПРЕДЛОЖЕНИЕ ========== -->
-<section class="offer reveal">
+<a href="#" class="offer reveal js-whatsapp-link" data-event="offer" aria-label="Написать в WhatsApp и получить первый расклад бесплатно">
   <div class="offer__fan">
     <div class="mini">
       <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="10" stroke="#f3d89a" stroke-width="1.2"/><path d="M24 14v20M14 24h20" stroke="#f3d89a" stroke-width="1"/></svg>
@@ -397,7 +461,10 @@ src="https://www.facebook.com/tr?id=2178615639697523&ev=PageView&noscript=1"/></
     <p class="line2">БЕСПЛАТНО</p>
     <p class="line3">Оплата по результату</p>
   </div>
-</section>
+  <span class="offer__arrow" aria-hidden="true">
+    <svg viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="#f3d89a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </span>
+</a>
 
 <!-- ========== БЛОК 5 — ПРЕИМУЩЕСТВА ========== -->
 <section class="benefits container reveal">
