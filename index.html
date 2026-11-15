@@ -313,13 +313,13 @@ src="https://www.facebook.com/tr?id=2178615639697523&ev=PageView&noscript=1"/></
     transition:transform .2s ease, box-shadow .2s ease;
   }
   .btn-whatsapp:active{transform:scale(.97);}
-  .btn-whatsapp svg{width:32px; height:32px; flex-shrink:0;}
+  .btn-whatsapp svg, .btn-whatsapp img{width:32px; height:32px; flex-shrink:0;}
   @media(hover:hover){
     .btn-whatsapp:hover{ transform:translateY(-2px); box-shadow:0 18px 38px rgba(37,211,102,.42), inset 0 1px 0 rgba(255,255,255,.3); }
   }
   @media(min-width:768px){
     .btn-whatsapp{ max-width:480px; padding:20px 24px; font-size:18.5px; border-radius:18px; }
-    .btn-whatsapp svg{ width:36px; height:36px; }
+    .btn-whatsapp svg, .btn-whatsapp img{ width:36px; height:36px; }
   }
 
   /* sticky floating button */
@@ -333,7 +333,7 @@ src="https://www.facebook.com/tr?id=2178615639697523&ev=PageView&noscript=1"/></
     transition:opacity .35s ease, transform .35s ease;
   }
   .fab.show{opacity:1; transform:translateY(0) scale(1); pointer-events:auto;}
-  .fab svg{width:27px; height:27px;}
+  .fab svg, .fab img{width:32px; height:32px;}
   @media(hover:hover){ .fab:hover{ transform:translateY(-3px) scale(1.06); } }
   @supports(padding:max(0px)){ .fab{ bottom:max(16px, env(safe-area-inset-bottom)); } }
 
@@ -424,14 +424,14 @@ src="https://www.facebook.com/tr?id=2178615639697523&ev=PageView&noscript=1"/></
 <!-- ========== БЛОК 6 — КНОПКА WHATSAPP ========== -->
 <section class="cta reveal">
   <a href="#" class="btn-whatsapp js-whatsapp-link" data-event="main">
-    <svg viewBox="0 0 32 32" fill="#fff"><path d="M16.02 3C9.4 3 4 8.4 4 15.02c0 2.23.6 4.32 1.65 6.12L4 29l8.06-1.6a12.9 12.9 0 003.96.63c6.62 0 12.02-5.4 12.02-12.02C28.04 8.4 22.64 3 16.02 3zm0 21.86c-1.9 0-3.68-.55-5.18-1.5l-.37-.22-4.78.94.97-4.64-.24-.38a9.84 9.84 0 01-1.52-5.24c0-5.44 4.42-9.86 9.86-9.86s9.86 4.42 9.86 9.86-4.42 9.86-9.86 9.86z"/><path d="M21.3 18.1c-.28-.14-1.68-.83-1.94-.92-.26-.1-.45-.14-.64.14-.19.28-.74.92-.9 1.1-.17.19-.33.21-.61.07-.28-.14-1.18-.44-2.25-1.4-.83-.74-1.39-1.66-1.55-1.94-.16-.28-.02-.43.12-.57.13-.13.28-.33.42-.5.14-.17.19-.28.28-.47.1-.19.05-.35-.02-.5-.07-.14-.64-1.56-.88-2.14-.23-.56-.47-.49-.64-.5-.17-.01-.35-.01-.54-.01-.19 0-.5.07-.76.35-.26.28-1 .98-1 2.4 0 1.42 1.03 2.78 1.17 2.97.14.19 2.03 3.1 4.93 4.35.69.3 1.22.48 1.64.61.69.22 1.32.19 1.81.11.55-.08 1.68-.68 1.92-1.35.24-.66.24-1.22.17-1.34-.07-.12-.26-.19-.54-.33z"/></svg>
+    <img src="whatsapp-icon.png" alt="" width="36" height="36">
     <span>ПОЛУЧИТЬ РАСКЛАД В WHATSAPP →</span>
   </a>
 </section>
 
 <!-- плавающая кнопка -->
 <a href="#" class="fab js-whatsapp-link" data-event="fab" aria-label="Написать в WhatsApp">
-  <svg viewBox="0 0 32 32" fill="#fff"><path d="M16.02 3C9.4 3 4 8.4 4 15.02c0 2.23.6 4.32 1.65 6.12L4 29l8.06-1.6a12.9 12.9 0 003.96.63c6.62 0 12.02-5.4 12.02-12.02C28.04 8.4 22.64 3 16.02 3zm0 21.86c-1.9 0-3.68-.55-5.18-1.5l-.37-.22-4.78.94.97-4.64-.24-.38a9.84 9.84 0 01-1.52-5.24c0-5.44 4.42-9.86 9.86-9.86s9.86 4.42 9.86 9.86-4.42 9.86-9.86 9.86z"/><path d="M21.3 18.1c-.28-.14-1.68-.83-1.94-.92-.26-.1-.45-.14-.64.14-.19.28-.74.92-.9 1.1-.17.19-.33.21-.61.07-.28-.14-1.18-.44-2.25-1.4-.83-.74-1.39-1.66-1.55-1.94-.16-.28-.02-.43.12-.57.13-.13.28-.33.42-.5.14-.17.19-.28.28-.47.1-.19.05-.35-.02-.5-.07-.14-.64-1.56-.88-2.14-.23-.56-.47-.49-.64-.5-.17-.01-.35-.01-.54-.01-.19 0-.5.07-.76.35-.26.28-1 .98-1 2.4 0 1.42 1.03 2.78 1.17 2.97.14.19 2.03 3.1 4.93 4.35.69.3 1.22.48 1.64.61.69.22 1.32.19 1.81.11.55-.08 1.68-.68 1.92-1.35.24-.66.24-1.22.17-1.34-.07-.12-.26-.19-.54-.33z"/></svg>
+  <img src="whatsapp-icon.png" alt="" width="32" height="32">
 </a>
 
 <!-- ========== БЛОК 7 — ФИНАЛЬНЫЙ ПРИЗЫВ ========== -->
@@ -453,7 +453,6 @@ src="https://www.facebook.com/tr?id=2178615639697523&ev=PageView&noscript=1"/></
     <path d="M54 50 70 40 64 62 50 66Z" fill="url(#cryR)" opacity=".4"/>
   </svg>
   <p class="quote">Не откладывайте важный для себя вопрос — сделайте первый шаг к ясности уже сегодня.</p>
-  <p class="privacy">Все обращения конфиденциальны. Информация, полученная на консультации, носит ознакомительный характер и не заменяет профессиональную медицинскую, юридическую или финансовую консультацию.</p>
 </section>
 
 <div class="silk" aria-hidden="true">
