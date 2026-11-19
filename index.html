@@ -575,11 +575,19 @@ src="https://www.facebook.com/tr?id=2178615639697523&ev=PageView&noscript=1"/></
             var waLink = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(WHATSAPP_THANKYOU_MESSAGE);
             leadForm.innerHTML =
               '<p class="leadform__title">Спасибо за заявку! Я свяжусь с вами в ближайшее время.</p>' +
-              '<a href="' + waLink + '" target="_blank" rel="noopener" class="btn-whatsapp">' +
+              '<a href="' + waLink + '" target="_blank" rel="noopener" class="btn-whatsapp" id="waThankYouLink">' +
                 '<img src="whatsapp-icon.png" alt="" width="32" height="32">' +
                 '<span>ДЛЯ БЫСТРОЙ СВЯЗИ WHATSAPP →</span>' +
               '</a>' +
               '<p class="leadform__status">Или просто подождите — я напишу вам сама</p>';
+            var waThankYouLink = document.getElementById("waThankYouLink");
+            if (waThankYouLink) {
+              waThankYouLink.addEventListener("click", function(){
+                if (typeof fbq !== "undefined" && window.metaPixelConsentGranted) {
+                  fbq("track", "Contact");
+                }
+              });
+            }
           } else {
             throw new Error("bad response");
           }
