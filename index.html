@@ -528,6 +528,7 @@ src="https://www.facebook.com/tr?id=2178615639697523&ev=PageView&noscript=1"/></
   if (phoneEl && window.intlTelInput) {
     iti = window.intlTelInput(phoneEl, {
       initialCountry: "de",
+      separateDialCode: true,
       countryOrder: ["de","pl","ua","fr","it","es","gb","nl","at","cz","ro","pt","gr","be","se","ch"],
       loadUtils: function(){ return import("https://cdn.jsdelivr.net/npm/intl-tel-input@26.0.6/build/js/utils.js"); }
     });
