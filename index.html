@@ -322,20 +322,33 @@ src="https://www.facebook.com/tr?id=2178615639697523&ev=PageView&noscript=1"/></
     .btn-whatsapp svg, .btn-whatsapp img{ width:36px; height:36px; }
   }
 
-  /* sticky floating button */
-  .fab{
-    position:fixed; right:16px; bottom:16px; z-index:50;
-    width:56px; height:56px; border-radius:50%;
-    background:linear-gradient(180deg, #2bdd73, var(--whatsapp-dark));
-    display:flex; align-items:center; justify-content:center;
-    box-shadow:0 10px 26px rgba(0,0,0,.45), 0 0 0 rgba(37,211,102,.4);
-    opacity:0; transform:translateY(16px) scale(.9); pointer-events:none;
-    transition:opacity .35s ease, transform .35s ease;
+  /* ---------- lead form ---------- */
+  .leadform{ max-width:420px; margin:0 auto; display:flex; flex-direction:column; gap:12px; }
+  .leadform__title{
+    font-family:'Playfair Display',serif;
+    font-size:16px;
+    color:var(--cream);
+    margin:0 0 4px;
   }
-  .fab.show{opacity:1; transform:translateY(0) scale(1); pointer-events:auto;}
-  .fab svg, .fab img{width:32px; height:32px;}
-  @media(hover:hover){ .fab:hover{ transform:translateY(-3px) scale(1.06); } }
-  @supports(padding:max(0px)){ .fab{ bottom:max(16px, env(safe-area-inset-bottom)); } }
+  .leadform__input{
+    width:100%;
+    padding:15px 18px;
+    border-radius:14px;
+    border:1.3px solid rgba(216,178,106,.4);
+    background:rgba(255,255,255,.04);
+    color:var(--cream);
+    font-family:'Manrope',sans-serif;
+    font-size:15.5px;
+    outline:none;
+    transition:border-color .2s ease, box-shadow .2s ease;
+  }
+  .leadform__input::placeholder{ color:var(--text-mute); }
+  .leadform__input:focus{ border-color:var(--gold-light); box-shadow:0 0 0 3px rgba(216,178,106,.15); }
+  .leadform .btn-whatsapp{ border:none; cursor:pointer; font-family:'Manrope',sans-serif; }
+  .leadform .btn-whatsapp:disabled{ opacity:.6; cursor:default; }
+  .leadform__status{ min-height:18px; margin:4px 0 0; font-size:13px; color:var(--gold-light); }
+  .leadform__status.is-error{ color:#f29b9b; }
+  @media(min-width:768px){ .leadform__title{ font-size:19px; } .leadform__input{ font-size:17px; padding:17px 20px; } }
 
   /* ---------- BLOCK 7 — final ---------- */
   .final{position:relative; padding:46px 24px 30px; text-align:center; overflow:visible;}
@@ -421,18 +434,18 @@ src="https://www.facebook.com/tr?id=2178615639697523&ev=PageView&noscript=1"/></
 </section>
 <p class="offer__terms container">Первый расклад не требует оплаты. Если захотите продолжить и углубиться в ситуацию — стоимость дальнейшей консультации обсудим отдельно, без скрытых условий.</p>
 
-<!-- ========== БЛОК 6 — КНОПКА WHATSAPP ========== -->
+<!-- ========== БЛОК 6 — ФОРМА ЗАЯВКИ ========== -->
 <section class="cta reveal">
-  <a href="#" class="btn-whatsapp js-whatsapp-link" data-event="main">
-    <img src="whatsapp-icon.png" alt="" width="36" height="36">
-    <span>ПОЛУЧИТЬ РАСКЛАД В WHATSAPP →</span>
-  </a>
+  <form id="leadForm" class="leadform" novalidate>
+    <p class="leadform__title">Оставьте имя и номер — я свяжусь с вами лично</p>
+    <input type="text" id="leadName" name="name" class="leadform__input" placeholder="Ваше имя" autocomplete="name" required>
+    <input type="tel" id="leadPhone" name="phone" class="leadform__input" placeholder="+380 XX XXX XX XX" autocomplete="tel" required>
+    <button type="submit" id="leadSubmit" class="btn-whatsapp">
+      <span>ПОЛУЧИТЬ РАСКЛАД →</span>
+    </button>
+    <p id="leadStatus" class="leadform__status" aria-live="polite"></p>
+  </form>
 </section>
-
-<!-- плавающая кнопка -->
-<a href="#" class="fab js-whatsapp-link" data-event="fab" aria-label="Написать в WhatsApp">
-  <img src="whatsapp-icon.png" alt="" width="32" height="32">
-</a>
 
 <!-- ========== БЛОК 7 — ФИНАЛЬНЫЙ ПРИЗЫВ ========== -->
 <section class="final reveal">
@@ -478,23 +491,54 @@ src="https://www.facebook.com/tr?id=2178615639697523&ev=PageView&noscript=1"/></
   "use strict";
 
   /* ======= РЕДАКТИРУЕМЫЕ ПАРАМЕТРЫ ======= */
-  // Номер WhatsApp в международном формате без "+", пробелов и скобок
-  var WHATSAPP_NUMBER = "380759163898";
-  var WHATSAPP_MESSAGE = "Здравствуйте! Хочу получить первый бесплатный расклад Таро.";
+  // URL веб-приложения Google Apps Script, принимающего заявки (doPost)
+  var FORM_ENDPOINT_URL = "https://script.google.com/macros/s/AKfycbwaw3FP-jyBe1xQ4JvKG6ZkQLrchs5nMLhDNGT24wtgVWgHDyo3eoQdxZqK2loD5QW9/exec";
 
-  // Lead отправляется сразу по клику, без баннера согласия на отслеживание
+  // Lead отправляется сразу после успешной отправки формы, без баннера согласия на отслеживание
   window.metaPixelConsentGranted = true;
 
-  /* ======= построение ссылок WhatsApp ======= */
-  var link = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(WHATSAPP_MESSAGE);
-  document.querySelectorAll(".js-whatsapp-link").forEach(function(el){
-    el.setAttribute("href", link);
-    el.addEventListener("click", function(){
-      if (typeof fbq !== "undefined" && window.metaPixelConsentGranted) {
-        fbq("track", "Lead"); // клик по WhatsApp ≠ подтверждённая консультация
+  /* ======= отправка формы (имя + телефон) ======= */
+  var leadForm = document.getElementById("leadForm");
+  if (leadForm) {
+    leadForm.addEventListener("submit", function(ev){
+      ev.preventDefault();
+      var nameEl = document.getElementById("leadName");
+      var phoneEl = document.getElementById("leadPhone");
+      var statusEl = document.getElementById("leadStatus");
+      var btn = document.getElementById("leadSubmit");
+      var name = nameEl.value.trim();
+      var phone = phoneEl.value.trim();
+      statusEl.classList.remove("is-error");
+      if (!name || !phone) {
+        statusEl.textContent = "Пожалуйста, заполните имя и телефон.";
+        statusEl.classList.add("is-error");
+        return;
       }
+      btn.disabled = true;
+      statusEl.textContent = "Отправляем...";
+      fetch(FORM_ENDPOINT_URL, {
+        method: "POST",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify({ name: name, phone: phone })
+      })
+        .then(function(res){ return res.json(); })
+        .then(function(data){
+          if (data && data.status === "ok") {
+            if (typeof fbq !== "undefined" && window.metaPixelConsentGranted) {
+              fbq("track", "Lead");
+            }
+            leadForm.innerHTML = '<p class="leadform__title">Спасибо! Мы получили вашу заявку и свяжемся с вами в ближайшее время.</p>';
+          } else {
+            throw new Error("bad response");
+          }
+        })
+        .catch(function(){
+          statusEl.textContent = "Не получилось отправить. Попробуйте ещё раз.";
+          statusEl.classList.add("is-error");
+          btn.disabled = false;
+        });
     });
-  });
+  }
 
   /* ======= год в футере ======= */
   var y = document.getElementById("year");
@@ -514,19 +558,6 @@ src="https://www.facebook.com/tr?id=2178615639697523&ev=PageView&noscript=1"/></
     revealItems.forEach(function(el){ io.observe(el); });
   } else {
     revealItems.forEach(function(el){ el.classList.add("in-view"); });
-  }
-
-  /* ======= плавающая кнопка WhatsApp после прокрутки ======= */
-  var fab = document.querySelector(".fab");
-  var heroEl = document.querySelector(".hero");
-  if (fab && heroEl) {
-    var toggleFab = function(){
-      var heroBottom = heroEl.getBoundingClientRect().bottom;
-      if (heroBottom < 0) { fab.classList.add("show"); }
-      else { fab.classList.remove("show"); }
-    };
-    window.addEventListener("scroll", toggleFab, { passive: true });
-    toggleFab();
   }
 })();
 </script>
